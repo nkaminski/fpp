@@ -474,10 +474,6 @@ EOF
 		echo "scaling_kernel=8" >> /boot/config.txt
 		echo >> /boot/config.txt
 
-		echo "# Allow more current through USB" >> /boot/config.txt
-		echo "max_usb_current=1" >> /boot/config.txt
-		echo >> /boot/config.txt
-
 		echo "FPP - Freeing up more space by removing unnecessary packages"
 		apt-get -y purge wolfram-engine sonic-pi minecraft-pi
 		apt-get -y --purge autoremove
@@ -638,19 +634,6 @@ then
 fi
 echo "${COMMENTED}/dev/sda1     /home/fpp/media  auto    defaults,noatime,nodiratime,exec,nofail,flush,uid=500,gid=500  0  0" >> /etc/fstab
 echo "#####################################" >> /etc/fstab
-
-
-#######################################
-# Disable IPv6
-echo "FPP - Disabling IPv6"
-cat <<-EOF >> /etc/sysctl.conf
-
-	# FPP - Disable IPv6
-	net.ipv6.conf.all.disable_ipv6 = 1
-	net.ipv6.conf.default.disable_ipv6 = 1
-	net.ipv6.conf.lo.disable_ipv6 = 1
-	net.ipv6.conf.eth0.disable_ipv6 = 1
-	EOF
 
 #######################################
 # Configure Apache run user/group

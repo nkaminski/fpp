@@ -417,9 +417,7 @@ EOF
 		apt-get -y install raspi-config
 
 		echo "FPP - Installing OLA packages"
-		echo "deb http://apt.openlighting.org/raspbian wheezy main" > /etc/apt/sources.list.d/ola.list
-		apt-get update
-		apt-get -y --force-yes install ola ola-rdm-tests ola-conf-plugins ola-dev libprotobuf-dev
+		apt-get -y install ola ola-rdm-tests libprotobuf-dev
 
 		echo "FPP - Updating packages"
 		apt-get -y upgrade

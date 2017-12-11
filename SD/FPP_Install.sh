@@ -412,8 +412,6 @@ EOF
 		;;
 
 	'Raspberry Pi')
-		wget http://goo.gl/1BOfJ -O /usr/bin/rpi-update && chmod +x /usr/bin/rpi-update
-		SKIP_WARNING=1 rpi-update d4945b3b77d29cc5bb3777734422c048c1f1d003
 
 		echo "FPP - Installing Pi-specific packages"
 		apt-get -y install raspi-config
@@ -617,6 +615,27 @@ service samba restart
 # Fix sudoers to not require password
 echo "FPP - Giving fpp user sudo"
 echo "fpp ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+#######################################
+# Print notice during login regarding console access
+cat <<-EOF >> /etc/motd
+[0;31m
+                   _______  ___
+                  / __/ _ \\/ _ \\
+                 / _// ___/ ___/ [0m Falcon Player[0;31m
+                /_/ /_/  /_/
+[1m
+This FPP console is for advanced users, debugging, and developers.  If
+you aren't one of those, you're probably looking for the web-based GUI.
+
+This FPP install has been modified by Nash Kaminski.
+Changes:
+    Do not raise USB current limit.
+    Keep IPv6 enabled.
+    Use default Debian 9 RPi kernel
+
+You can access the UI by typing "http://fpp.local/" into a web browser.[0m
+EOF
 
 #######################################
 # Config fstab to mount some filesystems as tmpfs

@@ -417,7 +417,7 @@ EOF
 		apt-get -y install raspi-config
 
 		echo "FPP - Installing OLA packages"
-		apt-get -y install ola ola-rdm-tests libprotobuf-dev
+		apt-get -y install ola ola-rdm-tests libola-dev libprotobuf-dev
 
 		echo "FPP - Updating packages"
 		apt-get -y upgrade
